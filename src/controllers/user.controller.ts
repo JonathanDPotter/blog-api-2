@@ -9,13 +9,21 @@ import {
   login,
 } from "../services/user.service";
 
+const validateUserHandler = async (_req: Request, res: Response) => {
+  try {
+    return res.sendStatus(200);
+  } catch (error: any) {
+    return res.status(401).send(error.message);
+  }
+};
+
 const createUserHandler = async (
   req: Request<{}, {}, CreateUserInput["body"]>,
   res: Response
 ) => {
   try {
     const user = await createUser(req.body);
-    return res.send(omit(user, "password"));
+    return res.json(omit(user, "password"));
   } catch (error: any) {
     console.log(error);
     return res.status(409).send(error.message);
@@ -27,7 +35,7 @@ const loginHandler = async (req: Request, res: Response) => {
 
   try {
     const token = await login(username, password);
-    return res.send(token);
+    return res.json(token);
   } catch (error: any) {
     console.log(error);
     return res.status(500).send(error.message);
@@ -37,7 +45,7 @@ const loginHandler = async (req: Request, res: Response) => {
 const getAllUsersHandler = async (_req: Request, res: Response) => {
   try {
     const users = await getAllUsers();
-    return res.send(users);
+    return res.json(users);
   } catch (error: any) {
     console.log(error);
     return res.status(500).send(error.message);
@@ -48,7 +56,7 @@ const getUserHandler = async (req: Request, res: Response) => {
   const { _id } = req.params;
   try {
     const user = await getUser(_id);
-    return res.send(user);
+    return res.json(user);
   } catch (error: any) {
     console.log(error);
     return res.status(500).send(error.message);
@@ -59,7 +67,7 @@ const deleteUserHandler = async (req: Request, res: Response) => {
   const { _id } = req.params;
   try {
     const user = await deleteUser(_id);
-    return res.send(`Successfully deleted ${user?.username}`);
+    return res.json(`Successfully deleted ${user?.username}`);
   } catch (error: any) {
     console.log(error);
     return res.status(500).send(error.message);
@@ -67,6 +75,7 @@ const deleteUserHandler = async (req: Request, res: Response) => {
 };
 
 const controller = {
+  validateUserHandler,
   createUserHandler,
   loginHandler,
   getAllUsersHandler,
