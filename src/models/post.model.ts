@@ -1,21 +1,23 @@
 import { Schema, model, Document } from "mongoose";
-import { UserDocument } from "./user.model";
+import UserModel, { UserDocument } from "./user.model";
 
 export interface PostInput {
-  user: UserDocument["_id"];
+  userId: UserDocument["_id"];
   title: string;
   body: string;
   published: boolean;
 }
 
 export interface PostDocument extends PostInput, Document {
+  author: string;
   createdAt: Date;
   updatedAt: Date;
 }
 
 const PostSchema = new Schema(
   {
-    user: { type: Schema.Types.ObjectId, ref: "User" },
+    userId: { type: Schema.Types.ObjectId, ref: "User" },
+    author: {type: String, required: true},
     title: { type: String, required: true },
     body: { type: String, required: true },
     published: { type: Boolean, required: true },

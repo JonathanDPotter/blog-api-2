@@ -2,7 +2,7 @@ import { object, string, boolean, TypeOf } from "zod";
 
 export const createPostSchema = object({
   body: object({
-    user: string({
+    userId: string({
       required_error: "User record is required",
     }),
     title: string({

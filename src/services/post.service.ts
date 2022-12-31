@@ -1,8 +1,10 @@
 import PostModel, { PostInput } from "../models/post.model";
+import UserModel from "../models/user.model";
 
 export const createPost = async (input: PostInput) => {
   try {
-    const post = await PostModel.create(input);
+    const author = await UserModel.findById(input.userId);
+    const post = await PostModel.create({ ...input, author: author?.username });
     return post;
   } catch (error: any) {
     throw new Error(error);
