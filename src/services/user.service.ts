@@ -1,4 +1,5 @@
 import bcrypt from "bcrypt";
+import { pick } from "lodash";
 import signJWT from "../utils/signJWT";
 import UserModel, { UserInput } from "../models/user.model";
 
@@ -31,17 +32,19 @@ export const getUser = async (_id: string) => {
 
 export const login = async (username: string, password: string) => {
   try {
-    const user = await UserModel.findOne({ username });
+    const userDoc = await UserModel.findOne({ username });
 
-    if (!user) throw new Error("User not found.");
+    if (!userDoc) throw new Error("User not found.");
 
-    const isAuth = await bcrypt.compare(password, user.password);
+    const isAuth = await bcrypt.compare(password, userDoc.password);
 
     if (!isAuth) throw new Error("Password is incorrect.");
 
-    const token = await signJWT(user);
+    const token = await signJWT(userDoc);
+    
+    const user = pick(userDoc, ["username", "_id"]);
 
-    return token;
+    return { user, token };
   } catch (error: any) {
     throw new Error(error);
   }

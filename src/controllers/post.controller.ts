@@ -18,7 +18,7 @@ const createPostHandler = async (
     return res.json(post);
   } catch (error: any) {
     console.log(error);
-    return res.status(409).send(error.message);
+    return res.status(500).json(error.message);
   }
 };
 
@@ -28,7 +28,7 @@ const getAllPostsHandler = async (_req: Request, res: Response) => {
     return res.json(posts);
   } catch (error: any) {
     console.log(error);
-    return res.status(500).send(error.message);
+    return res.status(500).json(error.message);
   }
 };
 
@@ -39,7 +39,7 @@ const getPostHandler = async (req: Request, res: Response) => {
     return res.json(post);
   } catch (error: any) {
     console.log(error);
-    return res.status(500).send(error.message);
+    return res.status(500).json(error.message);
   }
 };
 
@@ -50,7 +50,7 @@ const getUserPostsHandler = async (req: Request, res: Response) => {
     return res.json(posts);
   } catch (error: any) {
     console.log(error);
-    return res.status(500).send(error.message);
+    return res.status(500).json(error.message);
   }
 };
 
@@ -61,7 +61,7 @@ const updatePostHandler = async (req: Request, res: Response) => {
     return res.json(post);
   } catch (error: any) {
     console.log(error);
-    return res.status(500).send(error.message);
+    return res.status(500).json(error.message);
   }
 };
 
@@ -72,7 +72,7 @@ const deletePostHandler = async (req: Request, res: Response) => {
     return res.json(`Successfully deleted ${post?.title}`);
   } catch (error: any) {
     console.log(error);
-    return res.status(500).send(error.message);
+    return res.status(500).json(error.message);
   }
 };
 

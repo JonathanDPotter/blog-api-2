@@ -38,7 +38,7 @@ const loginHandler = async (req: Request, res: Response) => {
     return res.json(token);
   } catch (error: any) {
     console.log(error);
-    return res.status(500).send(error.message);
+    return res.status(500).json(error.message);
   }
 };
 
@@ -48,7 +48,7 @@ const getAllUsersHandler = async (_req: Request, res: Response) => {
     return res.json(users);
   } catch (error: any) {
     console.log(error);
-    return res.status(500).send(error.message);
+    return res.status(500).json(error.message);
   }
 };
 
@@ -59,7 +59,7 @@ const getUserHandler = async (req: Request, res: Response) => {
     return res.json(user);
   } catch (error: any) {
     console.log(error);
-    return res.status(500).send(error.message);
+    return res.status(500).json(error.message);
   }
 };
 
@@ -70,7 +70,7 @@ const deleteUserHandler = async (req: Request, res: Response) => {
     return res.json(`Successfully deleted ${user?.username}`);
   } catch (error: any) {
     console.log(error);
-    return res.status(500).send(error.message);
+    return res.status(500).json(error.message);
   }
 };
 
