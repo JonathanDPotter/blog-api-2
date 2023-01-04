@@ -58,6 +58,7 @@ const updatePostHandler = async (req: Request, res: Response) => {
   const { _id } = req.params;
   try {
     const post = await updatePost(_id, req.body);
+    console.log("put req: ", req.body);
     return res.json(post);
   } catch (error: any) {
     console.log(error);

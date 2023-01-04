@@ -1,5 +1,5 @@
 import { Schema, model, Document } from "mongoose";
-import UserModel, { UserDocument } from "./user.model";
+import  { UserDocument } from "./user.model";
 
 export interface PostInput {
   userId: UserDocument["_id"];
