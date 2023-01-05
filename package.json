@@ -7,6 +7,9 @@
   "license": "MIT",
   "private": false,
   "scripts": {
+    "start": "node dist/src/server.js",
+    "build": "tsc",
+    "postinstall": "npm run build",
     "dev": "nodemon src/server.ts",
     "test": "jest"
   },
