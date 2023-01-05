@@ -41,7 +41,7 @@ The api routes are as follows:
     "POST": {
       "/": "creates a new post record with {title, upcs}, requires auth as Bearer token"
     },
-    "PUT": {
+    "PATCH": {
       "/:_id": "updates post record with specific _id, requires auth as Bearer token"
     },
     "DELETE": {
