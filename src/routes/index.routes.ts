@@ -8,15 +8,25 @@ import config from "../config";
 const router = Router();
 
 router.get("/", (_req: Request, res: Response) =>
-  config.server.env === "development"
-    ? res.sendFile(path.join(__dirname, "../../static/index.html"))
-    : res.sendFile(path.join(__dirname, "/dist", "../../static/index.html"))
+  res.sendFile(
+    path.join(
+      __dirname,
+      config.server.env !== "development"
+        ? "../../../static/index.html"
+        : "../../static/index.html"
+    )
+  )
 );
 
 router.get("/about", (_req: Request, res: Response) => {
-  config.server.env === "development"
-    ? res.sendFile(path.join(__dirname, "../../static/about.html"))
-    : res.sendFile(path.join(__dirname, "/dist", "../../static/about.html"));
+  res.sendFile(
+    path.join(
+      __dirname,
+      config.server.env !== "development"
+        ? "../../../static/about.html"
+        : "../../static/about.html"
+    )
+  );
 });
 
 router.get("/healthcheck", (_req: Request, res: Response) =>
