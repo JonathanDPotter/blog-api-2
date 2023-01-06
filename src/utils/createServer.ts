@@ -13,7 +13,15 @@ const createServer = () => {
   // logging with morgan
   server.use(morgan("dev"));
   server.use(cors({ origin: "*" }));
-  server.use(helmet());
+  server.use(
+    helmet({
+      contentSecurityPolicy: {
+        directives: {
+          imgSrc: ["https://res.cloudinary.com"],
+        },
+      },
+    })
+  );
   server.use(indexRoutes);
 
   return server;

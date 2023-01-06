@@ -72,6 +72,34 @@ main {
   }
 }
 
+main.not-found {
+  background-color: $dark;
+  color: $text-light;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  h2 {
+    font-size: 3rem;
+  }
+
+  img {
+    width: 50vh;
+    margin: auto;
+  }
+
+  a {
+    border: 0.5rem solid $secondary;
+    border-radius: 0.5rem;
+    font-size: 3rem;
+    background-color: $dark;
+    color: $text-light;
+    padding: 1rem;
+    margin: 1rem auto;
+    text-decoration: none;
+  }
+}
+
 footer {
   @include header-footer;
   border-top: 0.25rem solid $primary;

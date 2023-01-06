@@ -32,16 +32,7 @@ router.use("/api/user", userRoutes);
 router.use("/api/post", postRoutes);
 
 router.all("*", (_req: Request, res: Response) => {
-  res
-    .status(404)
-    .sendFile(
-      path.join(
-        __dirname,
-        config.server.env === "development" || "test"
-          ? "../../static/404.html"
-          : "../../../static/404.html"
-      )
-    );
+  res.status(404).sendFile(path.join(__dirname, "../static/404.html"));
 });
 
 export default router;
