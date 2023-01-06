@@ -1,11 +1,8 @@
-import mongoose from "mongoose";
 import * as UserService from "../services/user.service";
 import supertest from "supertest";
 import createServer from "../utils/createServer";
 
 const app = createServer();
-
-const userId = mongoose.Types.ObjectId.toString();
 
 const userInput = {
   username: "Test User",

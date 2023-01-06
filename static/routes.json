@@ -22,7 +22,7 @@
       "/user/:_id": "returns all posts with specific author"
     },
     "POST": {
-      "/": "creates a new post record with {title, upcs}, requires auth as Bearer token"
+      "/": "creates a new post record when supplied with an object that has   userId: UserDocument['_id']; title: string; body: string; published: boolean; and requires auth as Bearer token"
     },
     "PUT": {
       "/:_id": "updates post record with specific _id, requires auth as Bearer token"

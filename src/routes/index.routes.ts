@@ -1,6 +1,6 @@
 import { Request, Response, Router } from "express";
 import path from "path";
-import routes from "./routes.json";
+import routes from "../../static/routes.json";
 import userRoutes from "./user.routes";
 import postRoutes from "./post.routes";
 import config from "../config";
@@ -11,20 +11,24 @@ router.get("/", (_req: Request, res: Response) =>
   res.sendFile(
     path.join(
       __dirname,
-      config.server.env !== "development"
-        ? "../../../static/index.html"
-        : "../../static/index.html"
+      config.server.env === "development" || "test"
+        ? "../../static/index.html"
+        : "../../../static/index.html"
     )
   )
 );
+
+router.get("/home", (_req: Request, res: Response) => {
+  res.redirect("/");
+});
 
 router.get("/about", (_req: Request, res: Response) => {
   res.sendFile(
     path.join(
       __dirname,
-      config.server.env !== "development"
-        ? "../../../static/about.html"
-        : "../../static/about.html"
+      config.server.env === "development" || "test"
+        ? "../../static/about.html"
+        : "../../../static/about.html"
     )
   );
 });
@@ -40,5 +44,18 @@ router.get("/routes", (_req: Request, res: Response) =>
 // add api routes
 router.use("/api/user", userRoutes);
 router.use("/api/post", postRoutes);
+
+router.all("*", (_req: Request, res: Response) => {
+  res
+    .status(404)
+    .sendFile(
+      path.join(
+        __dirname,
+        config.server.env === "development" || "test"
+          ? "../../static/404.html"
+          : "../../../static/404.html"
+      )
+    );
+});
 
 export default router;

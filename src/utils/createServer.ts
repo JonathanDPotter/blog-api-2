@@ -13,7 +13,9 @@ const createServer = () => {
     express.static(
       path.join(
         __dirname,
-        config.server.env !== "development" ? "../../../static" : "../../static"
+        config.server.env === "development" || "test"
+          ? "../../static"
+          : "../../../static"
       )
     )
   );
