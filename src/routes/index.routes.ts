@@ -1,6 +1,6 @@
 import { Request, Response, Router } from "express";
 import path from "path";
-import routes from "../../static/routes.json";
+import routes from "./routes.json";
 import userRoutes from "./user.routes";
 import postRoutes from "./post.routes";
 import config from "../config";
@@ -8,14 +8,7 @@ import config from "../config";
 const router = Router();
 
 router.get("/", (_req: Request, res: Response) =>
-  res.sendFile(
-    path.join(
-      __dirname,
-      config.server.env === "development" || "test"
-        ? "../../static/index.html"
-        : "../../../static/index.html"
-    )
-  )
+  res.sendFile(path.join(__dirname, "../static/index.html"))
 );
 
 router.get("/home", (_req: Request, res: Response) => {
@@ -23,14 +16,7 @@ router.get("/home", (_req: Request, res: Response) => {
 });
 
 router.get("/about", (_req: Request, res: Response) => {
-  res.sendFile(
-    path.join(
-      __dirname,
-      config.server.env === "development" || "test"
-        ? "../../static/about.html"
-        : "../../../static/about.html"
-    )
-  );
+  res.sendFile(path.join(__dirname, "../static/about.html"));
 });
 
 router.get("/healthcheck", (_req: Request, res: Response) =>

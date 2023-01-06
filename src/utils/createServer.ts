@@ -9,16 +9,7 @@ import indexRoutes from "../routes/index.routes";
 const createServer = () => {
   const server = express();
   server.use(express.json());
-  server.use(
-    express.static(
-      path.join(
-        __dirname,
-        config.server.env === "development" || "test"
-          ? "../../static"
-          : "../../../static"
-      )
-    )
-  );
+  server.use(express.static(path.join(__dirname, "../static")));
   // logging with morgan
   server.use(morgan("dev"));
   server.use(cors({ origin: "*" }));

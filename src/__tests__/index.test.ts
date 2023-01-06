@@ -1,6 +1,6 @@
 import supertest from "supertest";
 import createServer from "../utils/createServer";
-import routes from "../../static/routes.json";
+import routes from "../routes/routes.json";
 
 const app = createServer();
 
