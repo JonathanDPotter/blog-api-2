@@ -3,12 +3,21 @@ import path from "path";
 import routes from "./routes.json";
 import userRoutes from "./user.routes";
 import postRoutes from "./post.routes";
+import config from "../config";
 
 const router = Router();
 
 router.get("/", (_req: Request, res: Response) =>
-  res.sendFile(path.join(__dirname, "../../static/index.html"))
+  config.server.env === "development"
+    ? res.sendFile(path.join(__dirname, "../../static/index.html"))
+    : res.sendFile(path.join(__dirname, "/dist", "../../static/index.html"))
 );
+
+router.get("/about", (_req: Request, res: Response) => {
+  config.server.env === "development"
+    ? res.sendFile(path.join(__dirname, "../../static/about.html"))
+    : res.sendFile(path.join(__dirname, "/dist", "../../static/about.html"));
+});
 
 router.get("/healthcheck", (_req: Request, res: Response) =>
   res.sendStatus(200)
