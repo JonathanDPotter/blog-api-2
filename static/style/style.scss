@@ -17,17 +17,34 @@ body {
 
 @mixin header-footer {
   height: 10vh;
+  width: 100vw;
   background-color: $dark;
   color: $text-light;
+  line-height: 10vh;
+  left: 0;
 }
 
 header {
   @include header-footer;
   border-bottom: 0.25rem solid $primary;
+  h1 {
+    margin-left: 1rem;
+  }
 }
 
 main {
   min-height: 80vh;
+
+  section {
+    margin: 1rem;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    text-decoration: underline;
+    text-underline-offset: 0.5rem;
+  }
 
   .routes {
     margin: 1rem;
@@ -60,7 +77,6 @@ footer {
   border-top: 0.25rem solid $primary;
   display: grid;
   grid-template: "credits middle link" auto / 2fr 1fr 1fr;
-  align-content: center;
   text-align: center;
 
   span {
