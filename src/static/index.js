@@ -31,6 +31,8 @@ class Footer extends HTMLElement {
 customElements.define("header-component", Header);
 customElements.define("footer-component", Footer);
 
+const routesContainer = document.getElementById("routes");
+
 const routes = {
   user: {
     ROOT: "/api/user",
@@ -76,18 +78,4 @@ const routes = {
   },
 };
 
-const routesContainer = document.getElementsByClassName("routes");
-
-const keys = Object.keys(routes);
-
-const values = Object.values(routes);
-
-routesContainer[0].innerHTML = keys.map(
-  (key, i) =>
-    `<h3>${key}:</h3> <p class="route-list">${JSON.stringify(values[i])
-      .replace(/},/g, "}, <br />")
-      .replace(/{/g, "{ <br />")
-      .replace(/",/g, '", <br />')
-      .replace(/}/g, "} <br/> }")
-      .replace(/:/g, " : ")}</p>`
-);
+routesContainer.innerHTML = JSON.stringify(routes, null, 2);
