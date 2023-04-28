@@ -3,7 +3,6 @@ import path from "path";
 import routes from "./routes.json";
 import userRoutes from "./user.routes";
 import postRoutes from "./post.routes";
-import config from "../config";
 
 const router = Router();
 

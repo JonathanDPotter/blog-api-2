@@ -86,6 +86,4 @@ const controller = {
 };
 
 export default controller;
-function getUsersPosts(_id: string) {
-  throw new Error("Function not implemented.");
-}
+

@@ -3,7 +3,6 @@ import morgan from "morgan";
 import cors from "cors";
 import path from "path";
 import helmet from "helmet";
-import config from "../config";
 import indexRoutes from "../routes/index.routes";
 
 const createServer = () => {
