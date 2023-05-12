@@ -8,12 +8,8 @@
   "private": false,
   "scripts": {
     "start": "node dist/src/server.js",
-    "build": "yarn clean && tsc && yarn copy-files",
-    "clean": "rimraf dist/",
-    "copy-files": "copyfiles -u src/**/*.html src/**/*.css src/**/*.svg src/**/*.ico src/**/*.js dist/",
-    "postinstall": "yarn build",
+    "build": "tsc",
     "dev": "nodemon src/server.ts",
-    "dist-dev": "nodemon dist/src/server.js",
     "test": "jest --watchAll"
   },
   "dependencies": {
