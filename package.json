@@ -39,7 +39,7 @@
     "@types/node": "^18.11.18",
     "@types/jest": "^29.2.4",
     "@types/supertest": "^2.0.12",
-    "copyfiles": "^2.4.1",
+    "copyfiles": "^2.4.1"
   },
   "devDependencies": {
     "jest": "^29.3.1",
