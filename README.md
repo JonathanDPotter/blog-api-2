@@ -1,6 +1,6 @@
 # Blog-API-2
 
-This is the back-end api for the Odin Project blog project. I finished this several months ago, but I decided to go back and refactor it for cleaner code and better functionality. hence the "2" in the name. It handles full CRUD functionality and local authentication for a front-end blog which hasn't yet been updated to utilize it.
+This is the back-end api for the Odin Project blog project. The app is hosted on Heroku [here](https://jonathan-potter-blog-api-2.herokuapp.com/) and the front end repo is [here](https://github.com/JonathanDPotter/blog-front-2).I finished this several months ago, but I decided to go back and refactor it for cleaner code and better functionality. hence the "2" in the name. It handles full CRUD functionality and local authentication for a front-end blog which hasn't yet been updated to utilize it.
 
 ---
 
